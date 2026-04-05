@@ -1,10 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Abilities : MonoBehaviour
+public class Abilities : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler , IPointerClickHandler
 {
     GameManager GameManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject plus1CostDropdown;
     void Start()
     {
         
@@ -15,7 +16,17 @@ public class Abilities : MonoBehaviour
 
     }
 
-    private void OnMouseDown()
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        plus1CostDropdown.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        plus1CostDropdown.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (gameObject.name == "Plus1Ability")
         {
