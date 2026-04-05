@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI TMP;
-    [SerializeField] public static int money = 100;
+    [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] TextMeshProUGUI moneyPerClickText;
+    [SerializeField] TextMeshProUGUI plus1CostText;
+    public static double money = 100;
+    public static double moneyPerClick = 1;
+    public static double plus1Cost = 10;
+
     void Start()
     {
     }
 
     void Update()
     {
-        TMP.text = money.ToString("#,#");
+        moneyText.text = money.ToString("#,#");
+        moneyPerClickText.text = "+ " + moneyPerClick.ToString("#,#");
+        plus1CostText.text = "$ " + plus1Cost.ToString("#,#");
     }
 }
