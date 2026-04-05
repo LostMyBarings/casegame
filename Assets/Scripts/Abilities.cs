@@ -1,14 +1,17 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Abilities : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler , IPointerClickHandler
 {
+    private Vector2 velocity = Vector2.zero;
+    private float smoothTime = 0.3f;
     GameManager GameManager;
     public GameObject plus1CostDropdown;
+    public Vector2 targetPosition = new Vector2(1278, 686);
     void Start()
     {
-        
     }
 
     void Update()
@@ -18,7 +21,7 @@ public class Abilities : MonoBehaviour , IPointerEnterHandler , IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        plus1CostDropdown.SetActive(true);
+        plus1CostDropdown.transform.position = Vector2.SmoothDamp(plus1CostDropdown.transform.position, targetPosition, ref velocity, smoothTime);
     }
 
     public void OnPointerExit(PointerEventData eventData)
